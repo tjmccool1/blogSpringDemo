@@ -13,7 +13,6 @@ import java.util.List;
 public class PostController {
 
     @GetMapping("/posts")
-
     public String index(Model model){
         List<Post> posts = new ArrayList<>();
 
@@ -24,7 +23,7 @@ public class PostController {
 
         model.addAttribute("posts", posts);
 
-        return "post index page";
+        return "posts/index";
     }
 
     @GetMapping("/post/{id}")
@@ -33,17 +32,16 @@ public class PostController {
         Post post = new Post("Test post", "Test body describtion");
 
         model.addAttribute("post", post);
-        return "post/show";
+        return "posts/show";
     }
 
     @GetMapping("/post/create")
-
     public String ShowCreateForm(){
         System.out.println("view form");
         return "view form";
     }
 
-    @PostMapping("/post/create")
+    @PostMapping("/posts/create")
 
     public String createPost(@RequestParam String name){
         System.out.println("submitted form");
