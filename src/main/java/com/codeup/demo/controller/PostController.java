@@ -1,6 +1,7 @@
 package com.codeup.demo.controller;
 
 
+import com.codeup.demo.Repository.PostRepository;
 import com.codeup.demo.model.Post;
 import com.codeup.demo.services.PostService;
 import org.springframework.stereotype.Controller;
@@ -13,14 +14,18 @@ import java.util.List;
 @Controller
 public class PostController {
 
+//    PostRepository postDao;
 
 
     //injecting service
     PostService postService;
 
+//    , PostRepository postDao
+//    this.postDao = postDao;
 
     public PostController(PostService postService) {
         this.postService = postService;
+
     }
 
 
@@ -70,10 +75,18 @@ public class PostController {
 
 
     @PostMapping("/posts/{id}/edit")
-    @ResponseBody
+//    @ResponseBody
     public String updatePost(@PathVariable long id, @ModelAttribute Post post) {
         post.setId(id);
         postService.save(post);
+        return "redirect:/posts";
+    }
+
+
+
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id, @ModelAttribute Post post) {
+        postService.delete(id);
         return "redirect:/posts";
     }
 
