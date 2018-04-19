@@ -19,46 +19,62 @@ public class PostController {
     PostService postService;
 
 
-    public PostController(PostService postSvc) {
-        this.postService = postSvc;
+    public PostController(PostService postService) {
+        this.postService = postService;
     }
 
 
     @GetMapping("/posts")
     public String index(Model model){
 
-//        List<Post> posts = new ArrayList<>();
-//
-//        posts.add(new Post("This is title 1", "This is the 1st body"));
-//        posts.add(new Post("This is title 2", "This is the 2nd body"));
-//        posts.add(new Post("This is title 3", "This is the 3rd body"));
-//        posts.add(new Post("This is title 4", "This is the 4th body"));
-//
+        List<Post> posts = new ArrayList<>();
+
+        posts.add(new Post("This is title 1", "This is the 1st body"));
+        posts.add(new Post("This is title 2", "This is the 2nd body"));
+        posts.add(new Post("This is title 3", "This is the 3rd body"));
+        posts.add(new Post("This is title 4", "This is the 4th body"));
+
        model.addAttribute("posts", postService.getAllPosts());
 
-        return "posts/index";
+        return "/posts/index";
     }
 
-    @GetMapping("/post/{id}")
-
+    @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model model){
-        Post post = new Post("Test post", "Test body description");
-
-        model.addAttribute("post", post);
-        return "posts/show";
+//        Post post = new Post("Test post", "Test body description");
+        model.addAttribute("post", postService.getPost(id));
+        return "/posts/show";
     }
 
-    @GetMapping("/post/create")
-    public String ShowCreateForm(){
-        System.out.println("view form");
-        return "view form";
+    @GetMapping("/posts/create")
+//    @ResponseBody
+    public String ShowCreateForm(Model viewModel){
+//        System.out.println("view form");
+        viewModel.addAttribute("newPost", new Post());
+        return "/posts/create";
     }
 
     @PostMapping("/posts/create")
+//    @ResponseBody
+    public String createPost(@ModelAttribute Post newPost){
+//        System.out.println("submitted form");
+        postService.save(newPost);
+        return "redirect: ";
+    }
 
-    public String createPost(@RequestParam String name){
-        System.out.println("submitted form");
-        return "test is complete, " + name;
+    @GetMapping("/posts/{id}/edit")
+    public String updatePost(@PathVariable long id, Model viewModel) {
+       viewModel.addAttribute("post", postService.getPost(id));
+        return "/posts/edit";
+    }
+
+
+    @PostMapping("/posts/{id}/edit")
+    @ResponseBody
+    public String updatePost(@PathVariable long id, @ModelAttribute Post post) {
+        post.setId(id);
+        postService.save(post);
+        return "redirect:/posts";
     }
 
 
