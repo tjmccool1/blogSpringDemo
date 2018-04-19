@@ -3,11 +3,14 @@ package com.codeup.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="dog")
+@Table(name="dogs")
 public class Dog {
 
-    @Id @GeneratedValue
-    private int id;
+    @Id
+    @GeneratedValue
+//     required if spring 2.0   ->    (strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "int(11) UNSIGNED")
+    private long id;
 
     @Column(nullable = false)
     private int age;
@@ -15,7 +18,7 @@ public class Dog {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false )
     private String state_residing;
 
 
@@ -32,7 +35,7 @@ public class Dog {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
