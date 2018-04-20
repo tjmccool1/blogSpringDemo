@@ -2,6 +2,7 @@ package com.codeup.demo.controller;
 
 
 import com.codeup.demo.Repository.PostRepository;
+import com.codeup.demo.Repository.UserRepository;
 import com.codeup.demo.model.Post;
 import com.codeup.demo.services.PostService;
 import org.springframework.stereotype.Controller;
@@ -14,17 +15,20 @@ import java.util.List;
 @Controller
 public class PostController {
 
-//    PostRepository postDao;
+
 
 
     //injecting service
-    PostService postService;
+    private PostService postService;
+//    private PostRepository postDao;
+    private UserRepository userDao;
 
-//    , PostRepository postDao
-//    this.postDao = postDao;
 
-    public PostController(PostService postService) {
+    public PostController(PostService postService, PostRepository postDao, UserRepository userDao
+    ) {
         this.postService = postService;
+//        this.postDao = postDao;
+        this.userDao = userDao;
 
     }
 
@@ -32,12 +36,12 @@ public class PostController {
     @GetMapping("/posts")
     public String index(Model model){
 
-        List<Post> posts = new ArrayList<>();
-
-        posts.add(new Post("This is title 1", "This is the 1st body"));
-        posts.add(new Post("This is title 2", "This is the 2nd body"));
-        posts.add(new Post("This is title 3", "This is the 3rd body"));
-        posts.add(new Post("This is title 4", "This is the 4th body"));
+//        List<Post> posts = new ArrayList<>();
+//
+//        posts.add(new Post("This is title 1", "This is the 1st body"));
+//        posts.add(new Post("This is title 2", "This is the 2nd body"));
+//        posts.add(new Post("This is title 3", "This is the 3rd body"));
+//        posts.add(new Post("This is title 4", "This is the 4th body"));
 
        model.addAttribute("posts", postService.getAllPosts());
 

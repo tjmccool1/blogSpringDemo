@@ -13,14 +13,14 @@
         <h1>Rolling One Die</h1>
             <h2>Guess the Number</h2>
         
-        <div>
-            <a href="/roll-dice/1">1</a>
-            <a href="/roll-dice/2">2</a>
-            <a href="/roll-dice/3">3</a>
-            <a href="/roll-dice/4">4</a>
-            <a href="/roll-dice/5">5</a>
-            <a href="/roll-dice/6">6</a>
-        </div>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="/roll-dice/1" class="">1</a></li>
+            <li role="presentation" class="active"><a href="/roll-dice/2">2</a></li>
+            <li role="presentation" class="active"><a href="/roll-dice/3">3</a></li>
+            <li role="presentation" class="active"><a href="/roll-dice/4">4</a></li>
+            <li role="presentation" class="active"><a href="/roll-dice/5">5</a></li>
+            <li role="presentation" class="active"><a href="/roll-dice/6">6</a></li>
+        </ul>
         
         
         <div th:if="${guess}" >

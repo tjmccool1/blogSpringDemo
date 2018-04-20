@@ -3,8 +3,10 @@
 <head th:replace="/partials/head :: head('Edit Post')"></head>
 
 <body class="text-center">
-    <!--<div th:replace="/partials/header :: header"></div>-->
+
     <div th:replace="/partials/navbar :: navbar"></div>
+
+
     <form th:action="@{/posts/{id}/edit(id=${post.id})}" method="post" th:object="${post}" >
 
        <h3>Title:</h3>
@@ -18,18 +20,18 @@
     <input type="submit" value="Edit"/>
     </form>
 
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+
     <form th:action="@{'/posts/' + ${post.id} + '/delete'}" th:method="post" th:object="${post}">
         <input th:field="*{id}" type="hidden" />
         <input type="submit" value="Delete"/>
-        <form th:action="@{/post}" th:method="get">
-            <input type="submit" th:value="Cancel" />
-        </form>
     </form>
-        </div>
 
-    </div>
+
+    <form th:action="@{/posts}" th:method="get">
+        <input type="submit" th:value="Cancel" />
+    </form>
+
+
 
     <div th:include="partials/footer :: footer" ></div>
     <div th:replace="/partials/scripts :: scripts"></div>
