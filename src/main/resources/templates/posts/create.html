@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Create</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: head('Create Post')"></head>
+
 <body>
+<div th:replace="partials/navbar :: navbar"></div>
+
 <form th:action="@{/posts/create}" th:method="post" th:object="${newPost}">
     Title:
     <input th:field="*{title}" />
@@ -12,8 +13,14 @@
     Body:
     <textarea th:field="*{body}" ></textarea>
     <br />
-    <input type="submit" />
+    <input type="submit" th:value="Submit"/>
+    <form th:action="@{/post}" th:method="get">
+    <input type="submit" th:value="Cancel" />
+    </form>
 </form>
+
+<div th:include="partials/footer :: footer" ></div>
+<div th:replace="/partials/scripts :: scripts"></div>
 
 </body>
 </html>
