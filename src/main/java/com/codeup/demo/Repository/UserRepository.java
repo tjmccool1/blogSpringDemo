@@ -1,15 +1,12 @@
 package com.codeup.demo.Repository;
 
-import com.codeup.demo.model.Post;
+
+import com.codeup.demo.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface PostRepository extends CrudRepository <Post, Long>{
-
-    public void deleteById(long id);
-
+public interface UserRepository extends CrudRepository <User, Long>{
 
 
 
