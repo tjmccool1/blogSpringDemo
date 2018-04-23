@@ -20,18 +20,23 @@ public class PostController {
 
     //injecting service
     private PostService postService;
-//    private PostRepository postDao;
+    private PostRepository postDao;
     private UserRepository userDao;
 
 
     public PostController(PostService postService, PostRepository postDao, UserRepository userDao
     ) {
         this.postService = postService;
-//        this.postDao = postDao;
+        this.postDao = postDao;
         this.userDao = userDao;
 
     }
 
+//    @GetMapping("/home")
+//    public String lastPost(Model model){
+//        model.addAttribute("posts", postDao.findLast());
+//        return "/home";
+//    }
 
     @GetMapping("/posts")
     public String index(Model model){

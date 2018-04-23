@@ -6,19 +6,27 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-    <h1>Post</h1>
+<div class="container">
+    <div class="col-12">
+        <div class="text-center
+">
+            <h1>Post</h1>
 
-    <h3><span th:text="${post.title}"></span></h3>
-    <p><span th:text="${post.body}"></span></p>
-    <a th:href="${post.user.email}"><span th:text="${post.user.email}"></span></a>
+            <h3><span th:text="${post.title}"></span></h3>
+            <p><span th:text="${post.body}"></span></p>
+            <a th:href="${post.user.email}"><span th:text="${post.user.email}"></span></a>
 
-    <div>
-        <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="get" >
-            <input type="submit" th:value="Edit"/>
-        </form>
+            <div>
+                <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="get" >
+                    <input type="submit" th:value="Edit"/>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 
-    <!--<div th:include="partials/footer :: footer" ></div>-->
+
+    <div th:include="partials/footer :: footer" ></div>
     <div th:replace="/partials/scripts :: scripts"></div>
 </body>
 </html>
