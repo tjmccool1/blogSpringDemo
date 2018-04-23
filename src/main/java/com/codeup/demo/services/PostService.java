@@ -3,11 +3,8 @@ package com.codeup.demo.services;
 
 import com.codeup.demo.Repository.PostRepository;
 import com.codeup.demo.model.Post;
-import javafx.geometry.Pos;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
