@@ -13,7 +13,9 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @GetMapping("/home")
+
+//    @GetMapping("/home")
+    @GetMapping("/")
 //    @ResponseBody
     public String Welcome(){
         return "home";
