@@ -104,6 +104,7 @@ $(window).bind('load', function () {
             this.p9y = this.yLower;
 
             cx.beginPath();
+            // noinspection JSAnnotator
             cx.strokeStyle = `hsla(${hue},100%,${this.light}%,${this.opacity})`;
             cx.lineWidth = this.lw;
             cx.moveTo(this.p0x, this.p0y);
@@ -155,6 +156,7 @@ $(window).bind('load', function () {
             this.p9y = this.yHigher;
 
             cx.beginPath();
+            // noinspection JSAnnotator
             cx.strokeStyle = `hsla(${hue2},100%,${this.light}%,${this.opacity})`;
             cx.lineWidth = this.lw;
             cx.moveTo(this.p0x, this.p0y);
