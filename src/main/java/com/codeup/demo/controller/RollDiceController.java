@@ -12,7 +12,7 @@ public class RollDiceController {
     @GetMapping("/roll-dice")
 //    @ResponseBody
     public String showPage(){
-        return "/roll-dice";
+        return "roll-dice";
     }
 
     @GetMapping("/roll-dice/{guess}")
