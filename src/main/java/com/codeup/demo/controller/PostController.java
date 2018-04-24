@@ -4,6 +4,7 @@ package com.codeup.demo.controller;
 import com.codeup.demo.Repository.PostRepository;
 import com.codeup.demo.Repository.UserRepository;
 import com.codeup.demo.model.Post;
+import com.codeup.demo.model.User;
 import com.codeup.demo.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,6 +73,7 @@ public class PostController {
 //    @ResponseBody
     public String createPost(@ModelAttribute Post newPost){
 //        System.out.println("submitted form");
+
         postService.save(newPost);
         return "redirect: ";
     }

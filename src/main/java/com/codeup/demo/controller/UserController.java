@@ -27,18 +27,18 @@ public class UserController {
         return "users/sign-up";
     }
 
-    @PostMapping("/users/sign-up")
+    @PostMapping("/sign-up")
     public String registerUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
-        return "redirect:/login";
+        return "redirect:login";
     }
 
     @GetMapping("/users/login")
     public String showLoginForm() {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "users/login";
+        return "/login";
     }
 }
 
