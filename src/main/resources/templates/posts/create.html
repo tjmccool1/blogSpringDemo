@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/head :: head('Create Post')"></head>
 
+<head th:replace="partials/head :: head('Create Post')"></head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 
@@ -14,9 +13,13 @@
     <textarea th:field="*{body}" ></textarea>
     <br />
     <input type="submit" th:value="Submit"/>
-    <form th:action="@{/post}" th:method="get">
-    <input type="submit" th:value="Cancel" />
-    </form>
+    <!--<form th:action="@{/post}" th:method="get">-->
+    <!--<input type="submit" th:value="Cancel" />-->
+    <!--</form>-->
+</form>
+
+<form th:action="@{/post}" th:method="get">
+<input type="submit" th:value="Cancel" />
 </form>
 
 <div th:include="partials/footer :: footer" ></div>

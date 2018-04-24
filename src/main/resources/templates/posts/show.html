@@ -14,8 +14,9 @@
 
             <h3><span th:text="${post.title}"></span></h3>
             <p><span th:text="${post.body}"></span></p>
-            <a th:href="${post.user.email}"><span th:text="${post.user.email}"></span></a>
 
+            <!--<span th:text="${user.email}"></span>-->
+            <!--<p>Email <span th:text="${post.user}"></span></p>-->
             <div>
                 <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="get" >
                     <input type="submit" th:value="Edit"/>
