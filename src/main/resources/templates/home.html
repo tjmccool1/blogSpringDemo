@@ -23,6 +23,11 @@
 
         <h1 >This is  <br /> the home page</h1>
 
+        <div th:each="post : ${posts}">
+            <h3><a th:href="@{/posts/{id}(id=${post.id})}" ><span th:text="${post.title}"></span></a></h3>
+            <p><span th:text="${post.body}"></span></p>
+        </div>
+
 
         <div th:if="${name}">
             <h3>Welcome, <span th:text="${name}">World</span>!</h3>
@@ -35,10 +40,7 @@
     </div><!--body .text-center</div>-->
 
 
-        <div th:each="post : ${posts}">
-            <h3><a th:href="@{/posts/{id}(id=${post.id})}" ><span th:text="${post.title}"></span></a></h3>
-            <p><span th:text="${post.body}"></span></p>
-        </div>
+
 
 
 

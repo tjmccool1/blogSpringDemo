@@ -6,6 +6,7 @@ import com.codeup.demo.Repository.UserRepository;
 import com.codeup.demo.model.Post;
 import com.codeup.demo.model.User;
 import com.codeup.demo.services.PostService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -73,7 +74,8 @@ public class PostController {
 //    @ResponseBody
     public String createPost(@ModelAttribute Post newPost){
 //        System.out.println("submitted form");
-
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        newPost.setUser(loggedInUser);
         postService.save(newPost);
         return "redirect: ";
     }

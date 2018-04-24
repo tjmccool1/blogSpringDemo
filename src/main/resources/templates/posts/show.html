@@ -16,7 +16,7 @@
             <p><span th:text="${post.body}"></span></p>
 
             <!--<span th:text="${user.email}"></span>-->
-            <!--<p>Email <span th:text="${post.user}"></span></p>-->
+            <!--<p>Email <span th:text="${post.user.email}"></span></p>-->
             <div>
                 <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="get" >
                     <input type="submit" th:value="Edit"/>

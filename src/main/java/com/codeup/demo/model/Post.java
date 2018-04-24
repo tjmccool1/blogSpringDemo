@@ -16,6 +16,7 @@ public class Post {
     private String title;
 
     @Column(nullable = false)
+    @Lob
     private String body;
 
 //    create relationship to users table

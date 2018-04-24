@@ -14,11 +14,16 @@
         <h3><a th:href="@{/posts/{id}(id=${post.id})}" ><span th:text="${post.title}"></span></a></h3>
         <p><span th:text="${post.body}"></span></p>
     </div>
-            <div class="mx-auto">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
                  <form th:action="@{/posts/create}" th:method="get">
                      <button type="submit" th:value="Create">Create New Post</button>
                 </form>
+                    </div>
+                </div>
             </div>
+
     </div> <!-- row close -->
 </div><!-- container-fluid -->
 <div th:include="partials/footer :: footer" ></div>
