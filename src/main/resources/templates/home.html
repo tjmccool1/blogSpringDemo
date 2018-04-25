@@ -8,13 +8,13 @@
 </head>
 <body>
     <!--<div th:replace="partials/header :: header"></div>-->
-
-    <div class="container-fluid" id="container">
-
-        <canvas id="c" style="padding: 0;" >Sorry, your browser does not support canvas.</canvas>
-
-    </div>
     <div th:replace="partials/navbar :: navbar"></div>
+    <div class="container-fluid" id="container">
+        <div class="row" id="particle-container">
+        <canvas id="c" style="padding: 0;" >Sorry, your browser does not support canvas.</canvas>
+        </div>
+    </div>
+
 
     <div class="text-center">
 
