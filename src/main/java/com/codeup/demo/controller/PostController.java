@@ -36,7 +36,7 @@ public class PostController {
 
 //    @GetMapping("/home")
 //    public String lastPost(Model model){
-//        model.addAttribute("posts", postDao.findLast());
+//        model.addAttribute("posts", postDao.
 //        return "/home";
 //    }
 

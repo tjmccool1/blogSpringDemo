@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport"
@@ -12,7 +12,10 @@
 
         <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="/home">Spring Blog Demo</a>
+                <a class="navbar-brand" href="/">Spring Blog Demo</a>
+                <!--<div sec:authorize="!isAuthenticated()">-->
+                    <!--Welcome <span th:text="${#authentication.principal.username}"/>-->
+                <!--</div>-->
 
                     <button class="navbar-toggler"
                             type="button"
@@ -39,12 +42,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/posts">Blog Posts</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
-                        <li class="nav-link">
-                            <a class="nav-item" href="/users/sign-up">Signup</a>
+                        <li class="nav-link" sec:authorize="!isAuthenticated()">
+                            <a class="nav-item" href="/users/sign-up">Register</a>
                         </li>
+                        <!--<li class="nav-link" sec:authorize="isAuthenticated()">-->
+                            <!--<a id="logout" href="#">Logout</a>-->
+                            <!--<form id="logout-form" th:action="@{/logout}" th:method="POST"></form>-->
+                        <!--</li>-->
                     </ul>
                     <!--<form class="form-inline my-2 my-lg-0">-->
                         <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>-->
@@ -55,10 +62,11 @@
 
 
 
-
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn">Logout</button>
-                    </form>
+                    <div sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn">Logout</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <!--<div class="dropdown-menu">-->

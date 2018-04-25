@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="partials/head :: head(${post.title})"></head>
 
 <body>
@@ -17,7 +17,7 @@
 
             <!--<span th:text="${user.email}"></span>-->
             <!--<p>Email <span th:text="${post.user.email}"></span></p>-->
-            <div>
+            <div sec:authorize="isAuthenticated()">
                 <form th:action="@{'/posts/' + ${post.id} + '/edit'}" th:method="get" >
                     <input type="submit" th:value="Edit"/>
                 </form>
