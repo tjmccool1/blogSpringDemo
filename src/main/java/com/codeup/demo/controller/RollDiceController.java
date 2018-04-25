@@ -11,7 +11,7 @@ public class RollDiceController {
 
     @GetMapping("/roll-dice")
 //    @ResponseBody
-    public String showPage(){
+    public String showDicePage(){
         return "roll-dice";
     }
 
