@@ -4,24 +4,21 @@
 <head th:replace="partials/head :: head('Create Post')"></head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
+    <div class="container-fluid">
+        <form th:action="@{/posts/create}" th:method="post" th:object="${newPost}">
+            Title:
+            <input th:field="*{title}" />
+            <br />
+            Body:
+            <textarea th:field="*{body}" ></textarea>
+            <br />
+            <input type="submit" th:value="Submit"/>
+        </form>
 
-<form th:action="@{/posts/create}" th:method="post" th:object="${newPost}">
-    Title:
-    <input th:field="*{title}" />
-    <br />
-    Body:
-    <textarea th:field="*{body}" ></textarea>
-    <br />
-    <input type="submit" th:value="Submit"/>
-    <!--<form th:action="@{/post}" th:method="get">-->
-    <!--<input type="submit" th:value="Cancel" />-->
-    <!--</form>-->
-</form>
-
-<form th:action="@{/post}" th:method="get">
-<input type="submit" th:value="Cancel" />
-</form>
-
+        <form th:action="@{/post}" th:method="get">
+        <input type="submit" th:value="Cancel" />
+        </form>
+    </div>
 <div th:include="partials/footer :: footer" ></div>
 <div th:replace="/partials/scripts :: scripts"></div>
 
