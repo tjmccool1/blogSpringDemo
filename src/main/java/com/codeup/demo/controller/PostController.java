@@ -9,10 +9,11 @@ import com.codeup.demo.services.PostService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.Valid;
+
 
 @Controller
 public class PostController {
@@ -65,20 +66,39 @@ public class PostController {
     @GetMapping("/posts/create")
 //    @ResponseBody
     public String ShowCreateForm(Model viewModel){
-//        System.out.println("view form");
-        viewModel.addAttribute("newPost", new Post());
+        viewModel.addAttribute("post", new Post());
         return "/posts/create";
     }
 
+//    @PostMapping("/posts/create")
+////    public String createPost(@ModelAttribute Post post){
+//    public String createPost(@Valid Post post, Errors validation, Model model){
+//        if(validation.hasErrors()){
+//            model.addAttribute("errors", validation);
+//            model.addAttribute("post",post);
+//            return "/posts/create";
+//        }
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        post.setUser(loggedInUser);
+//        postService.save(post);
+//        return "redirect: ";
+//    }
+
     @PostMapping("/posts/create")
-//    @ResponseBody
-    public String createPost(@ModelAttribute Post newPost){
-//        System.out.println("submitted form");
+    public String createPost(@Valid Post post, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute(errors);
+            model.addAttribute(post);
+            return "/posts/create";
+        }
+
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newPost.setUser(loggedInUser);
-        postService.save(newPost);
-        return "redirect: ";
+        post.setUser(loggedInUser);
+
+        postDao.save(post);
+        return "redirect:/posts";
     }
+
 
     @GetMapping("/posts/{id}/edit")
     public String updatePost(@PathVariable long id, Model viewModel) {

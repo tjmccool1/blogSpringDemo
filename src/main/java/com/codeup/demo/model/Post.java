@@ -1,6 +1,9 @@
 package com.codeup.demo.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="posts")
@@ -13,10 +16,13 @@ public class Post {
     private long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "Post must have a title.")
+//    @Size(min = 3, message = "The Title must be at least 3 characters.")
     private String title;
 
     @Column(nullable = false)
     @Lob
+    @NotBlank(message = "Post must have some Text.")
     private String body;
 
 //    create relationship to users table
