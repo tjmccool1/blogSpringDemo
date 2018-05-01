@@ -13,7 +13,7 @@
             <h1>Post</h1>
 
             <h3><span th:text="${post.title}"></span></h3>
-            <p><span th:text="${post.body}"></span></p>
+            <span th:utext="${post.body}"></span>
 
             <!--<span th:text="${user.email}"></span>-->
             <!--<p>Email <span th:text="${post.user.email}"></span></p>-->

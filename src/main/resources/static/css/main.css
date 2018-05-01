@@ -18,3 +18,8 @@ body {
     background-color: darkolivegreen;
     /*background-color: #f5f5f5;*/
 }
+
+#texteditor {
+    margin:10px 0;
+    height:200px;
+}
