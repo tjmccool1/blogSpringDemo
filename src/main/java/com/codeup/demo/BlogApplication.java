@@ -15,5 +15,8 @@ public class BlogApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(BlogApplication.class);
 	}
-
 }
+// another method for setting env server and port
+
+
+
