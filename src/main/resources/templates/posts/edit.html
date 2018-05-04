@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/head :: head('Edit Post')"></head>
+<head th:replace="/partials/head :: head('Edit Post')">
+
+</head>
 
 <body class="text-center">
 
@@ -13,11 +15,12 @@
             <input th:id="title" th:field="*{title}" th:value="*{title}"/>
 
     <br />
-    <h3>Body:</h3>
-    <textarea th:field="*{body}" th:value="*{body}"></textarea>
-    <br />
+        <label for="texteditor">Body:</label>
+        <textarea id="texteditor" class="form-control" th:field="*{body}"></textarea>
+        <p class="error" th:if="${#fields.hasErrors('body')}" th:errors="*{body}" ></p>
+        <br />
         <input type="hidden" th:field="*{id}" th:value="*{id}"/>
-    <input type="submit" value="Edit"/>
+    <input type="submit" value="Submit"/>
     </form>
 
 
@@ -34,6 +37,9 @@
 
 
     <div th:include="partials/footer :: footer" ></div>
+    <script type="text/javascript">
+        var editor = textboxio.replace('#texteditor');
+    </script>
     <div th:replace="/partials/scripts :: scripts"></div>
 
 </body>
